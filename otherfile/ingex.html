@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云庭音乐 - 页面未找到</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #F5F7FA; /* 月影白背景 */
+            color: #6B7A7F; /* 苔痕灰正文 */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 天空渐变背景 */
+        .sky-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f0f8ff 0%, #d8e9f5 30%, #F5F7FA 70%);
+            z-index: -2;
+        }
+        
+        /* 云朵装饰 */
+        .cloud {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            z-index: -1;
+            opacity: 0.8;
+        }
+        
+        .cloud-1 {
+            width: 120px;
+            height: 40px;
+            top: 15%;
+            left: 10%;
+            animation: floatCloud 30s infinite linear;
+        }
+        
+        .cloud-2 {
+            width: 180px;
+            height: 60px;
+            top: 25%;
+            right: 8%;
+            animation: floatCloud 40s infinite linear reverse;
+        }
+        
+        .cloud-3 {
+            width: 100px;
+            height: 35px;
+            bottom: 20%;
+            left: 15%;
+            animation: floatCloud 35s infinite linear;
+        }
+        
+        @keyframes floatCloud {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(30px); }
+            100% { transform: translateX(0); }
+        }
+        
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 头部区域 */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            color: #5D8AA8;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 2px;
+            background-color: #5D8AA8;
+            bottom: -5px;
+            left: 30%;
+            opacity: 0.6;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #6B7A7F;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        /* 404显示区域 */
+        .error-section {
+            text-align: center;
+            margin-bottom: 80px;
+            width: 100%;
+        }
+        
+        .error-code {
+            font-size: 10rem;
+            font-weight: 700;
+            color: #5D8AA8;
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
+            text-shadow: 0 5px 15px rgba(93, 138, 168, 0.2);
+        }
+        
+        .error-code::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #E86A52; /* 赤心橙 */
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .error-message {
+            font-size: 1.8rem;
+            color: #6B7A7F;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .error-description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        /* 网站地图区域 */
+        .sitemap-section {
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 50px;
+        }
+        
+        .sitemap-title {
+            text-align: center;
+            color: #5D8AA8;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .sitemap-title::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background-color: #5D8AA8;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.5;
+        }
+        
+        .sitemap-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .sitemap-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(93, 138, 168, 0.08);
+            border: 1px solid rgba(107, 122, 127, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .sitemap-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(93, 138, 168, 0.15);
+            border-color: rgba(93, 138, 168, 0.3);
+        }
+        
+        .sitemap-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(93, 138, 168, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #5D8AA8;
+            font-size: 1.5rem;
+        }
+        
+        .sitemap-item-title {
+            font-size: 1.3rem;
+            color: #5D8AA8;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .sitemap-link {
+            display: inline-block;
+            color: #6B7A7F;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(107, 122, 127, 0.2);
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            word-break: break-all;
+            width: 100%;
+        }
+        
+        .sitemap-link:hover {
+            background-color: rgba(232, 106, 82, 0.1);
+            color: #E86A52;
+            border-color: rgba(232, 106, 82, 0.4);
+        }
+        
+        /* 底部区域 */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            width: 100%;
+            color: #6B7A7F;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(107, 122, 127, 0.1);
+            margin-top: 30px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #5D8AA8;
+            color: white;
+            border: 1px solid #5D8AA8;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a7795;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(93, 138, 168, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #6B7A7F;
+            border: 1px solid #6B7A7F;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(107, 122, 127, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+            
+            .error-code {
+                font-size: 8rem;
+            }
+            
+            .error-message {
+                font-size: 1.5rem;
+            }
+            
+            .sitemap-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            
+            .sitemap-item {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 天空背景 -->
+    <div class="sky-background"></div>
+    
+    <!-- 云朵装饰 -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="logo">云庭音乐</h1>
+            <p class="tagline">雨止云散 · 天青乐韵</p>
+        </header>
+        
+        <!-- 404错误区域 -->
+        <section class="error-section">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-message">页面未找到</h2>
+            <p class="error-description">
+                很抱歉，您访问的页面暂时无法找到。可能它已被移动、删除或暂时不可用。
+                请检查网址是否正确，或通过下方的网站地图找到您需要的内容。
+            </p>
+            
+            <div class="action-buttons">
+                <a href="https://music.ytin.mgo.us.ci/" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-home"></i> 返回主页
+                </a>
+                <a href="javascript:history.back()" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> 返回上一页
+                </a>
+            </div>
+        </section>
+        
+        <!-- 网站地图区域 -->
+        <section class="sitemap-section">
+            <h2 class="sitemap-title">网站地图</h2>
+            
+            <div class="sitemap-container">
+                <!-- 主页 -->
+                <div class="sitemap-item">
+                    <div class="sitemap-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="sitemap-item-title">主页</h3>
+                    <p>云庭音乐主站，探索最新音乐和推荐内容</p>
+                    <a href="https://music.ytin.mgo.us.ci/" class="sitemap-link" target="_blank">https://music.ytin.mgo.us.ci/</a>
+                </div>
+                
+                <!-- 开放平台 -->
+                <div class="sitemap-item">
+                    <div class="sitemap-icon">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3 class="sitemap-item-title">开放平台</h3>
+                    <p>音乐人创作平台</p>
+                    <a href="http://open.music.ytin.mgo.us.ci/" class="sitemap-link" target="_blank">http://open.music.ytin.mgo.us.ci/</a>
+                </div>
+                
+                <!-- 音乐人贡献榜 -->
+                <div class="sitemap-item">
+                    <div class="sitemap-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="sitemap-item-title">音乐人贡献榜</h3>
+                    <p>优秀音乐人排行榜，发现创作人才</p>
+                    <a href="https://music.ytin.mgo.us.ci/team/" class="sitemap-link" target="_blank">https://music.ytin.mgo.us.ci/team/</a>
+                </div>
+                
+                <!-- 测试音频 -->
+                <div class="sitemap-item">
+                    <div class="sitemap-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="sitemap-item-title">测试音频</h3>
+                    <p>音频测试和示例，体验高品质音乐</p>
+                    <a href="https://music.ytin.mgo.us.ci/music/000/" class="sitemap-link" target="_blank">https://music.ytin.mgo.us.ci/music/000/</a>
+                </div>
+                
+                <!-- 文档 -->
+                <div class="sitemap-item">
+                    <div class="sitemap-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="sitemap-item-title">文档</h3>
+                    <p>使用指南和帮助文档以及开发者文档，快速上手云庭音乐</p>
+                    <a href="https://music.ytin.mgo.us.ci/doct/" class="sitemap-link" target="_blank">https://music.ytin.mgo.us.ci/doct/</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>© 2025-2026 云庭音乐 | 雨止云散，天空初晴，乐韵悠扬</p>
+            <p>如您需要帮助，请联系技术团队MangoClub：MangoClub2025@outlook.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为404数字添加动画
+            const errorCode = document.querySelector('.error-code');
+            errorCode.style.opacity = '0';
+            errorCode.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                errorCode.style.transition = 'opacity 1s ease, transform 1s ease';
+                errorCode.style.opacity = '1';
+                errorCode.style.transform = 'translateY(0)';
+            }, 300);
+            
+            // 为网站地图项添加延迟动画
+            const sitemapItems = document.querySelectorAll('.sitemap-item');
+            sitemapItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 500 + index * 100);
+            });
+            
+            // 添加链接点击动画效果
+            const links = document.querySelectorAll('a[href^="http"], a[href^="https"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果链接是返回上一页，则不需要添加效果
+                    if(this.getAttribute('href') === 'javascript:history.back()') return;
+                    
+                    // 添加点击效果
+                    const originalText = this.innerHTML;
+                    const originalWidth = this.offsetWidth;
+                    
+                    // 添加加载动画
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 跳转中...';
+                    this.style.width = originalWidth + 'px';
+                    this.style.cursor = 'wait';
+                    
+                    // 禁用所有链接防止多次点击
+                    links.forEach(l => {
+                        l.style.pointerEvents = 'none';
+                    });
+                    
+                    // 延迟跳转让用户看到效果
+                    setTimeout(() => {
+                        // 恢复链接状态
+                        this.innerHTML = originalText;
+                        this.style.width = '';
+                        this.style.cursor = '';
+                        
+                        // 重新启用所有链接
+                        links.forEach(l => {
+                            l.style.pointerEvents = 'auto';
+                        });
+                        
+                        // 实际跳转将在默认行为中发生
+                    }, 800);
+                });
+            });
+            
+            // 为返回按钮添加点击效果
+            const backButton = document.querySelector('a[href="javascript:history.back()"]');
+            if(backButton) {
+                backButton.addEventListener('click', function() {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 返回中...';
+                    this.style.cursor = 'wait';
+                    
+                    setTimeout(() => {
+                        history.back();
+                    }, 300);
+                });
+            }
+            
+            // 添加页面访问统计
+            console.log('云庭音乐404页面已加载 - ' + new Date().toLocaleString());
+        });
+    </script>
+</body>
+</html>
