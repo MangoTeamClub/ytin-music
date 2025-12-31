@@ -625,7 +625,7 @@
                 <i class="fas fa-music"></i>
                 <span>正在播放: <span id="playingSong">未命名 - 测试</span></span>
             </div>
-            <p>当前播放器支持同目录下 music001.mp3 到 music100.mp3 格式的音频文件</p>
+            <p>当前播放器支持远程音乐文件播放</p>
             <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
                 点击右上角 <i class="fas fa-user-edit" style="color: var(--accent-color);"></i> 创作者中心 进入音乐创作平台
             </p>
@@ -662,108 +662,108 @@
             const creatorCenterBtn = document.getElementById('creatorCenterBtn');
             const detailBtn = document.getElementById('detailBtn');
             
-            // 音乐数据
+            // 音乐数据 - ID为三位数，filename为完整URL
             const audioData = [
-                { id: 1, title: "小美满钢琴曲", filename: "music/001", duration: "01:38" },
-                { id: 2, title: "未命名2", filename: "music002", duration: "00:00" },
-                { id: 3, title: "未命名3", filename: "music003", duration: "01:35" },
-                { id: 4, title: "未命名4", filename: "music004", duration: "01:35" },
-                { id: 5, title: "未命名5", filename: "music005", duration: "01:35" },
-                { id: 6, title: "未命名6", filename: "music006", duration: "01:35" },
-                { id: 7, title: "未命名7", filename: "music007", duration: "01:35" },
-                { id: 8, title: "未命名8", filename: "music008", duration: "01:35" },
-                { id: 9, title: "未命名9", filename: "music009", duration: "01:35" },
-                { id: 10, title: "未命名10", filename: "music010", duration: "01:35" },
-                { id: 11, title: "未命名11", filename: "music011", duration: "01:35" },
-                { id: 12, title: "未命名12", filename: "music012", duration: "01:35" },
-                { id: 13, title: "未命名13", filename: "music013", duration: "01:35" },
-                { id: 14, title: "未命名14", filename: "music014", duration: "01:35" },
-                { id: 15, title: "未命名15", filename: "music015", duration: "01:35" },
-                { id: 16, title: "未命名16", filename: "music016", duration: "01:35" },
-                { id: 17, title: "未命名17", filename: "music017", duration: "01:35" },
-                { id: 18, title: "未命名18", filename: "music018", duration: "01:35" },
-                { id: 19, title: "未命名19", filename: "music019", duration: "01:35" },
-                { id: 20, title: "未命名20", filename: "music020", duration: "01:35" },
-                { id: 21, title: "未命名21", filename: "music021", duration: "01:35" },
-                { id: 22, title: "未命名22", filename: "music022", duration: "01:35" },
-                { id: 23, title: "未命名23", filename: "music023", duration: "01:35" },
-                { id: 24, title: "未命名24", filename: "music024", duration: "01:35" },
-                { id: 25, title: "未命名25", filename: "music025", duration: "01:35" },
-                { id: 26, title: "未命名26", filename: "music026", duration: "01:35" },
-                { id: 27, title: "未命名27", filename: "music027", duration: "01:35" },
-                { id: 28, title: "未命名28", filename: "music028", duration: "01:35" },
-                { id: 29, title: "未命名29", filename: "music029", duration: "01:35" },
-                { id: 30, title: "未命名30", filename: "music030", duration: "01:35" },
-                { id: 31, title: "未命名31", filename: "music031", duration: "01:35" },
-                { id: 32, title: "未命名32", filename: "music032", duration: "01:35" },
-                { id: 33, title: "未命名33", filename: "music033", duration: "01:35" },
-                { id: 34, title: "未命名34", filename: "music034", duration: "01:35" },
-                { id: 35, title: "未命名35", filename: "music035", duration: "01:35" },
-                { id: 36, title: "未命名36", filename: "music036", duration: "01:35" },
-                { id: 37, title: "未命名37", filename: "music037", duration: "01:35" },
-                { id: 38, title: "未命名38", filename: "music038", duration: "01:35" },
-                { id: 39, title: "未命名39", filename: "music039", duration: "01:35" },
-                { id: 40, title: "未命名40", filename: "music040", duration: "01:35" },
-                { id: 41, title: "未命名41", filename: "music041", duration: "01:35" },
-                { id: 42, title: "未命名42", filename: "music042", duration: "01:35" },
-                { id: 43, title: "未命名43", filename: "music043", duration: "01:35" },
-                { id: 44, title: "未命名44", filename: "music044", duration: "01:35" },
-                { id: 45, title: "未命名45", filename: "music045", duration: "01:35" },
-                { id: 46, title: "未命名46", filename: "music046", duration: "01:35" },
-                { id: 47, title: "未命名47", filename: "music047", duration: "01:35" },
-                { id: 48, title: "未命名48", filename: "music048", duration: "01:35" },
-                { id: 49, title: "未命名49", filename: "music049", duration: "01:35" },
-                { id: 50, title: "未命名50", filename: "music050", duration: "01:35" },
-                { id: 51, title: "未命名51", filename: "music051", duration: "01:35" },
-                { id: 52, title: "未命名52", filename: "music052", duration: "01:35" },
-                { id: 53, title: "未命名53", filename: "music053", duration: "01:35" },
-                { id: 54, title: "未命名54", filename: "music054", duration: "01:35" },
-                { id: 55, title: "未命名55", filename: "music055", duration: "01:35" },
-                { id: 56, title: "未命名56", filename: "music056", duration: "01:35" },
-                { id: 57, title: "未命名57", filename: "music057", duration: "01:35" },
-                { id: 58, title: "未命名58", filename: "music058", duration: "01:35" },
-                { id: 59, title: "未命名59", filename: "music059", duration: "01:35" },
-                { id: 60, title: "未命名60", filename: "music060", duration: "01:35" },
-                { id: 61, title: "未命名61", filename: "music061", duration: "01:35" },
-                { id: 62, title: "未命名62", filename: "music062", duration: "01:35" },
-                { id: 63, title: "未命名63", filename: "music063", duration: "01:35" },
-                { id: 64, title: "未命名64", filename: "music064", duration: "01:35" },
-                { id: 65, title: "未命名65", filename: "music065", duration: "01:35" },
-                { id: 66, title: "未命名66", filename: "music066", duration: "01:35" },
-                { id: 67, title: "未命名67", filename: "music067", duration: "01:35" },
-                { id: 68, title: "未命名68", filename: "music068", duration: "01:35" },
-                { id: 69, title: "未命名69", filename: "music069", duration: "01:35" },
-                { id: 70, title: "未命名70", filename: "music070", duration: "01:35" },
-                { id: 71, title: "未命名71", filename: "music071", duration: "01:35" },
-                { id: 72, title: "未命名72", filename: "music072", duration: "01:35" },
-                { id: 73, title: "未命名73", filename: "music073", duration: "01:35" },
-                { id: 74, title: "未命名74", filename: "music074", duration: "01:35" },
-                { id: 75, title: "未命名75", filename: "music075", duration: "01:35" },
-                { id: 76, title: "未命名76", filename: "music076", duration: "01:35" },
-                { id: 77, title: "未命名77", filename: "music077", duration: "01:35" },
-                { id: 78, title: "未命名78", filename: "music078", duration: "01:35" },
-                { id: 79, title: "未命名79", filename: "music079", duration: "01:35" },
-                { id: 80, title: "未命名80", filename: "music080", duration: "01:35" },
-                { id: 81, title: "未命名81", filename: "music081", duration: "01:35" },
-                { id: 82, title: "未命名82", filename: "music082", duration: "01:35" },
-                { id: 83, title: "未命名83", filename: "music083", duration: "01:35" },
-                { id: 84, title: "未命名84", filename: "music084", duration: "01:35" },
-                { id: 85, title: "未命名85", filename: "music085", duration: "01:35" },
-                { id: 86, title: "未命名86", filename: "music086", duration: "01:35" },
-                { id: 87, title: "未命名87", filename: "music087", duration: "01:35" },
-                { id: 88, title: "未命名88", filename: "music088", duration: "01:35" },
-                { id: 89, title: "未命名89", filename: "music089", duration: "01:35" },
-                { id: 90, title: "未命名90", filename: "music090", duration: "01:35" },
-                { id: 91, title: "未命名91", filename: "music091", duration: "01:35" },
-                { id: 92, title: "未命名92", filename: "music092", duration: "01:35" },
-                { id: 93, title: "未命名93", filename: "music093", duration: "01:35" },
-                { id: 94, title: "未命名94", filename: "music094", duration: "01:35" },
-                { id: 95, title: "未命名95", filename: "music095", duration: "01:35" },
-                { id: 96, title: "未命名96", filename: "music096", duration: "01:35" },
-                { id: 97, title: "未命名97", filename: "music097", duration: "01:35" },
-                { id: 98, title: "未命名98", filename: "music098", duration: "01:35" },
-                { id: 99, title: "未命名99", filename: "music099", duration: "01:35" },
-                { id: 100, title: "未命名100", filename: "music100", duration: "01:35" }
+                { id: "001", title: "小美满钢琴曲", filename: "https://music.ytin.mgo.us.ci/music/001.mp3", duration: "01:38" },
+                { id: "002", title: "未命名002", filename: "https://music.ytin.mgo.us.ci/music/002.mp3", duration: "01:35" },
+                { id: "003", title: "未命名003", filename: "https://music.ytin.mgo.us.ci/music/003.mp3", duration: "01:35" },
+                { id: "004", title: "未命名004", filename: "https://music.ytin.mgo.us.ci/music/004.mp3", duration: "01:35" },
+                { id: "005", title: "未命名005", filename: "https://music.ytin.mgo.us.ci/music/005.mp3", duration: "01:35" },
+                { id: "006", title: "未命名006", filename: "https://music.ytin.mgo.us.ci/music/006.mp3", duration: "01:35" },
+                { id: "007", title: "未命名007", filename: "https://music.ytin.mgo.us.ci/music/007.mp3", duration: "01:35" },
+                { id: "008", title: "未命名008", filename: "https://music.ytin.mgo.us.ci/music/008.mp3", duration: "01:35" },
+                { id: "009", title: "未命名009", filename: "https://music.ytin.mgo.us.ci/music/009.mp3", duration: "01:35" },
+                { id: "010", title: "未命名010", filename: "https://music.ytin.mgo.us.ci/music/010.mp3", duration: "01:35" },
+                { id: "011", title: "未命名011", filename: "https://music.ytin.mgo.us.ci/music/011.mp3", duration: "01:35" },
+                { id: "012", title: "未命名012", filename: "https://music.ytin.mgo.us.ci/music/012.mp3", duration: "01:35" },
+                { id: "013", title: "未命名013", filename: "https://music.ytin.mgo.us.ci/music/013.mp3", duration: "01:35" },
+                { id: "014", title: "未命名014", filename: "https://music.ytin.mgo.us.ci/music/014.mp3", duration: "01:35" },
+                { id: "015", title: "未命名015", filename: "https://music.ytin.mgo.us.ci/music/015.mp3", duration: "01:35" },
+                { id: "016", title: "未命名016", filename: "https://music.ytin.mgo.us.ci/music/016.mp3", duration: "01:35" },
+                { id: "017", title: "未命名017", filename: "https://music.ytin.mgo.us.ci/music/017.mp3", duration: "01:35" },
+                { id: "018", title: "未命名018", filename: "https://music.ytin.mgo.us.ci/music/018.mp3", duration: "01:35" },
+                { id: "019", title: "未命名019", filename: "https://music.ytin.mgo.us.ci/music/019.mp3", duration: "01:35" },
+                { id: "020", title: "未命名020", filename: "https://music.ytin.mgo.us.ci/music/020.mp3", duration: "01:35" },
+                { id: "021", title: "未命名021", filename: "https://music.ytin.mgo.us.ci/music/021.mp3", duration: "01:35" },
+                { id: "022", title: "未命名022", filename: "https://music.ytin.mgo.us.ci/music/022.mp3", duration: "01:35" },
+                { id: "023", title: "未命名023", filename: "https://music.ytin.mgo.us.ci/music/023.mp3", duration: "01:35" },
+                { id: "024", title: "未命名024", filename: "https://music.ytin.mgo.us.ci/music/024.mp3", duration: "01:35" },
+                { id: "025", title: "未命名025", filename: "https://music.ytin.mgo.us.ci/music/025.mp3", duration: "01:35" },
+                { id: "026", title: "未命名026", filename: "https://music.ytin.mgo.us.ci/music/026.mp3", duration: "01:35" },
+                { id: "027", title: "未命名027", filename: "https://music.ytin.mgo.us.ci/music/027.mp3", duration: "01:35" },
+                { id: "028", title: "未命名028", filename: "https://music.ytin.mgo.us.ci/music/028.mp3", duration: "01:35" },
+                { id: "029", title: "未命名029", filename: "https://music.ytin.mgo.us.ci/music/029.mp3", duration: "01:35" },
+                { id: "030", title: "未命名030", filename: "https://music.ytin.mgo.us.ci/music/030.mp3", duration: "01:35" },
+                { id: "031", title: "未命名031", filename: "https://music.ytin.mgo.us.ci/music/031.mp3", duration: "01:35" },
+                { id: "032", title: "未命名032", filename: "https://music.ytin.mgo.us.ci/music/032.mp3", duration: "01:35" },
+                { id: "033", title: "未命名033", filename: "https://music.ytin.mgo.us.ci/music/033.mp3", duration: "01:35" },
+                { id: "034", title: "未命名034", filename: "https://music.ytin.mgo.us.ci/music/034.mp3", duration: "01:35" },
+                { id: "035", title: "未命名035", filename: "https://music.ytin.mgo.us.ci/music/035.mp3", duration: "01:35" },
+                { id: "036", title: "未命名036", filename: "https://music.ytin.mgo.us.ci/music/036.mp3", duration: "01:35" },
+                { id: "037", title: "未命名037", filename: "https://music.ytin.mgo.us.ci/music/037.mp3", duration: "01:35" },
+                { id: "038", title: "未命名038", filename: "https://music.ytin.mgo.us.ci/music/038.mp3", duration: "01:35" },
+                { id: "039", title: "未命名039", filename: "https://music.ytin.mgo.us.ci/music/039.mp3", duration: "01:35" },
+                { id: "040", title: "未命名040", filename: "https://music.ytin.mgo.us.ci/music/040.mp3", duration: "01:35" },
+                { id: "041", title: "未命名041", filename: "https://music.ytin.mgo.us.ci/music/041.mp3", duration: "01:35" },
+                { id: "042", title: "未命名042", filename: "https://music.ytin.mgo.us.ci/music/042.mp3", duration: "01:35" },
+                { id: "043", title: "未命名043", filename: "https://music.ytin.mgo.us.ci/music/043.mp3", duration: "01:35" },
+                { id: "044", title: "未命名044", filename: "https://music.ytin.mgo.us.ci/music/044.mp3", duration: "01:35" },
+                { id: "045", title: "未命名045", filename: "https://music.ytin.mgo.us.ci/music/045.mp3", duration: "01:35" },
+                { id: "046", title: "未命名046", filename: "https://music.ytin.mgo.us.ci/music/046.mp3", duration: "01:35" },
+                { id: "047", title: "未命名047", filename: "https://music.ytin.mgo.us.ci/music/047.mp3", duration: "01:35" },
+                { id: "048", title: "未命名048", filename: "https://music.ytin.mgo.us.ci/music/048.mp3", duration: "01:35" },
+                { id: "049", title: "未命名049", filename: "https://music.ytin.mgo.us.ci/music/049.mp3", duration: "01:35" },
+                { id: "050", title: "未命名050", filename: "https://music.ytin.mgo.us.ci/music/050.mp3", duration: "01:35" },
+                { id: "051", title: "未命名051", filename: "https://music.ytin.mgo.us.ci/music/051.mp3", duration: "01:35" },
+                { id: "052", title: "未命名052", filename: "https://music.ytin.mgo.us.ci/music/052.mp3", duration: "01:35" },
+                { id: "053", title: "未命名053", filename: "https://music.ytin.mgo.us.ci/music/053.mp3", duration: "01:35" },
+                { id: "054", title: "未命名054", filename: "https://music.ytin.mgo.us.ci/music/054.mp3", duration: "01:35" },
+                { id: "055", title: "未命名055", filename: "https://music.ytin.mgo.us.ci/music/055.mp3", duration: "01:35" },
+                { id: "056", title: "未命名056", filename: "https://music.ytin.mgo.us.ci/music/056.mp3", duration: "01:35" },
+                { id: "057", title: "未命名057", filename: "https://music.ytin.mgo.us.ci/music/057.mp3", duration: "01:35" },
+                { id: "058", title: "未命名058", filename: "https://music.ytin.mgo.us.ci/music/058.mp3", duration: "01:35" },
+                { id: "059", title: "未命名059", filename: "https://music.ytin.mgo.us.ci/music/059.mp3", duration: "01:35" },
+                { id: "060", title: "未命名060", filename: "https://music.ytin.mgo.us.ci/music/060.mp3", duration: "01:35" },
+                { id: "061", title: "未命名061", filename: "https://music.ytin.mgo.us.ci/music/061.mp3", duration: "01:35" },
+                { id: "062", title: "未命名062", filename: "https://music.ytin.mgo.us.ci/music/062.mp3", duration: "01:35" },
+                { id: "063", title: "未命名063", filename: "https://music.ytin.mgo.us.ci/music/063.mp3", duration: "01:35" },
+                { id: "064", title: "未命名064", filename: "https://music.ytin.mgo.us.ci/music/064.mp3", duration: "01:35" },
+                { id: "065", title: "未命名065", filename: "https://music.ytin.mgo.us.ci/music/065.mp3", duration: "01:35" },
+                { id: "066", title: "未命名066", filename: "https://music.ytin.mgo.us.ci/music/066.mp3", duration: "01:35" },
+                { id: "067", title: "未命名067", filename: "https://music.ytin.mgo.us.ci/music/067.mp3", duration: "01:35" },
+                { id: "068", title: "未命名068", filename: "https://music.ytin.mgo.us.ci/music/068.mp3", duration: "01:35" },
+                { id: "069", title: "未命名069", filename: "https://music.ytin.mgo.us.ci/music/069.mp3", duration: "01:35" },
+                { id: "070", title: "未命名070", filename: "https://music.ytin.mgo.us.ci/music/070.mp3", duration: "01:35" },
+                { id: "071", title: "未命名071", filename: "https://music.ytin.mgo.us.ci/music/071.mp3", duration: "01:35" },
+                { id: "072", title: "未命名072", filename: "https://music.ytin.mgo.us.ci/music/072.mp3", duration: "01:35" },
+                { id: "073", title: "未命名073", filename: "https://music.ytin.mgo.us.ci/music/073.mp3", duration: "01:35" },
+                { id: "074", title: "未命名074", filename: "https://music.ytin.mgo.us.ci/music/074.mp3", duration: "01:35" },
+                { id: "075", title: "未命名075", filename: "https://music.ytin.mgo.us.ci/music/075.mp3", duration: "01:35" },
+                { id: "076", title: "未命名076", filename: "https://music.ytin.mgo.us.ci/music/076.mp3", duration: "01:35" },
+                { id: "077", title: "未命名077", filename: "https://music.ytin.mgo.us.ci/music/077.mp3", duration: "01:35" },
+                { id: "078", title: "未命名078", filename: "https://music.ytin.mgo.us.ci/music/078.mp3", duration: "01:35" },
+                { id: "079", title: "未命名079", filename: "https://music.ytin.mgo.us.ci/music/079.mp3", duration: "01:35" },
+                { id: "080", title: "未命名080", filename: "https://music.ytin.mgo.us.ci/music/080.mp3", duration: "01:35" },
+                { id: "081", title: "未命名081", filename: "https://music.ytin.mgo.us.ci/music/081.mp3", duration: "01:35" },
+                { id: "082", title: "未命名082", filename: "https://music.ytin.mgo.us.ci/music/082.mp3", duration: "01:35" },
+                { id: "083", title: "未命名083", filename: "https://music.ytin.mgo.us.ci/music/083.mp3", duration: "01:35" },
+                { id: "084", title: "未命名084", filename: "https://music.ytin.mgo.us.ci/music/084.mp3", duration: "01:35" },
+                { id: "085", title: "未命名085", filename: "https://music.ytin.mgo.us.ci/music/085.mp3", duration: "01:35" },
+                { id: "086", title: "未命名086", filename: "https://music.ytin.mgo.us.ci/music/086.mp3", duration: "01:35" },
+                { id: "087", title: "未命名087", filename: "https://music.ytin.mgo.us.ci/music/087.mp3", duration: "01:35" },
+                { id: "088", title: "未命名088", filename: "https://music.ytin.mgo.us.ci/music/088.mp3", duration: "01:35" },
+                { id: "089", title: "未命名089", filename: "https://music.ytin.mgo.us.ci/music/089.mp3", duration: "01:35" },
+                { id: "090", title: "未命名090", filename: "https://music.ytin.mgo.us.ci/music/090.mp3", duration: "01:35" },
+                { id: "091", title: "未命名091", filename: "https://music.ytin.mgo.us.ci/music/091.mp3", duration: "01:35" },
+                { id: "092", title: "未命名092", filename: "https://music.ytin.mgo.us.ci/music/092.mp3", duration: "01:35" },
+                { id: "093", title: "未命名093", filename: "https://music.ytin.mgo.us.ci/music/093.mp3", duration: "01:35" },
+                { id: "094", title: "未命名094", filename: "https://music.ytin.mgo.us.ci/music/094.mp3", duration: "01:35" },
+                { id: "095", title: "未命名095", filename: "https://music.ytin.mgo.us.ci/music/095.mp3", duration: "01:35" },
+                { id: "096", title: "未命名096", filename: "https://music.ytin.mgo.us.ci/music/096.mp3", duration: "01:35" },
+                { id: "097", title: "未命名097", filename: "https://music.ytin.mgo.us.ci/music/097.mp3", duration: "01:35" },
+                { id: "098", title: "未命名098", filename: "https://music.ytin.mgo.us.ci/music/098.mp3", duration: "01:35" },
+                { id: "099", title: "未命名099", filename: "https://music.ytin.mgo.us.ci/music/099.mp3", duration: "01:35" },
+                { id: "100", title: "未命名100", filename: "https://music.ytin.mgo.us.ci/music/100.mp3", duration: "01:35" }
             ];
             
             let currentSongIndex = 0;
@@ -779,7 +779,7 @@
                         title: item.title,
                         artist: '测试',
                         cover: 'https://avatars.githubusercontent.com/u/242339050?v=4',
-                        file: item.filename + '.mp3',
+                        file: item.filename, // 直接使用完整的URL
                         duration: item.duration
                     });
                 });
@@ -794,8 +794,8 @@
                     songItem.className = index === currentSongIndex ? 'song-item active' : 'song-item';
                     songItem.dataset.index = index;
                     
-                    // 格式化歌曲编号
-                    const songNumber = (index + 1).toString().padStart(3, '0');
+                    // 使用歌曲的ID（已经是三位数）
+                    const songNumber = song.id;
                     
                     songItem.innerHTML = `
                         <div class="song-number">${songNumber}</div>
@@ -830,7 +830,7 @@
                 albumArt.style.backgroundImage = `url(${song.cover})`;
                 playingSong.textContent = `${song.title} - ${song.artist}`;
                 
-                // 设置音频源
+                // 设置音频源（已经是完整的URL）
                 audioPlayer.src = song.file;
                 
                 // 播放
@@ -884,8 +884,8 @@
             
             // 歌曲详情按钮点击事件
             detailBtn.addEventListener('click', function() {
-                // 获取当前歌曲ID并格式化为三位数
-                const currentSongId = (currentSongIndex + 1).toString().padStart(3, '0');
+                // 获取当前歌曲ID（已经是三位数）
+                const currentSongId = songs[currentSongIndex].id;
                 // 构建跳转URL
                 const detailUrl = `https://music.ytin.mgo.us.ci/music/${currentSongId}`;
                 // 跳转到歌曲详情页
