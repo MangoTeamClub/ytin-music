@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云庭音乐 - 文档与使用指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary-blue: #5D8AA8;    /* 霁青蓝 - 主色 */
+            --moon-white: #F5F7FA;       /* 月影白 - 背景色 */
+            --moss-gray: #6B7A7F;        /* 苔痕灰 - 正文/边框色 */
+            --heart-orange: #E86A52;     /* 赤心橙 - 强调色 */
+            --dark-bg: #1a252f;          /* 深色背景 */
+            --light-text: #F5F7FA;       /* 浅色文字 */
+            --dark-text: #2C3E50;        /* 深色文字 */
+        }
+        
+        body {
+            background-color: var(--moon-white);
+            color: var(--moss-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 10% 20%, rgba(93, 138, 168, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 80%, rgba(232, 106, 82, 0.08) 0px, transparent 50%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-icon {
+            color: var(--primary-blue);
+            font-size: 2.8rem;
+            filter: drop-shadow(0 4px 6px rgba(93, 138, 168, 0.3));
+        }
+        
+        h1 {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(93, 138, 168, 0.2);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--moss-gray);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(107, 122, 127, 0.1);
+            border: 1px solid rgba(107, 122, 127, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(107, 122, 127, 0.15);
+        }
+        
+        h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(93, 138, 168, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--primary-blue);
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--heart-orange);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .warning {
+            background-color: rgba(232, 106, 82, 0.08);
+            border-left: 4px solid var(--heart-orange);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .warning i {
+            color: var(--heart-orange);
+            margin-right: 8px;
+        }
+        
+        .info-box {
+            background-color: rgba(93, 138, 168, 0.08);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .info-box i {
+            color: var(--primary-blue);
+            margin-right: 8px;
+        }
+        
+        .url-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .url-list li {
+            background-color: rgba(245, 247, 250, 0.8);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .url-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(93, 138, 168, 0.1);
+        }
+        
+        .url-list i {
+            color: var(--primary-blue);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+        
+        .url-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .url-link:hover {
+            color: var(--heart-orange);
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(107, 122, 127, 0.2);
+            color: var(--moss-gray);
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            color: var(--heart-orange);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .logo-icon {
+                font-size: 2.2rem;
+            }
+        }
+        
+        .music-note {
+            position: fixed;
+            font-size: 1.5rem;
+            opacity: 0.07;
+            z-index: -1;
+            animation: float 20s infinite linear;
+            color: var(--primary-blue);
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+            box-shadow: 0 4px 8px rgba(93, 138, 168, 0.3);
+        }
+        
+        .update-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            border: 1px solid rgba(93, 138, 168, 0.2);
+            box-shadow: 0 4px 10px rgba(93, 138, 168, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .update-time i {
+            color: var(--primary-blue);
+        }
+        
+        .color-scheme {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .color-box {
+            width: 80px;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .primary-color {
+            background-color: var(--primary-blue);
+        }
+        
+        .white-color {
+            background-color: var(--moon-white);
+            color: var(--dark-text);
+            border: 1px solid rgba(107, 122, 127, 0.3);
+        }
+        
+        .gray-color {
+            background-color: var(--moss-gray);
+        }
+        
+        .orange-color {
+            background-color: var(--heart-orange);
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(93, 138, 168, 0.3);
+        }
+        
+        .button:hover {
+            background-color: var(--heart-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(232, 106, 82, 0.3);
+        }
+        
+        .button-orange {
+            background-color: var(--heart-orange);
+            box-shadow: 0 4px 8px rgba(232, 106, 82, 0.3);
+        }
+        
+        .button-orange:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-cloud logo-icon"></i>
+                <h1>云庭音乐<span class="year-badge">2025-2026</span></h1>
+            </div>
+            <p class="tagline">"雨止云散，天空初晴" - 连接未来与传统的音乐分享平台</p>
+            <div class="update-time">
+                <i class="fas fa-clock"></i>
+                <span>最后更新: 2026年1月1日 00:00</span>
+            </div>
+            
+            <div class="color-scheme">
+                <div class="color-box primary-color">霁青蓝 #5D8AA8</div>
+                <div class="color-box white-color">月影白 #F5F7FA</div>
+                <div class="color-box gray-color">苔痕灰 #6B7A7F</div>
+                <div class="color-box orange-color">赤心橙 #E86A52</div>
+            </div>
+        </header>
+        
+        <section class="section">
+            <div class="section-title">
+                <h2><i class="fas fa-exclamation-triangle"></i> 免责声明与使用条款</h2>
+                <a href="#contact" class="button button-orange">联系作者</a>
+            </div>
+            
+            <div class="warning">
+                <p><i class="fas fa-ban"></i> <strong>重要提醒：</strong>本平台所有音乐文件仅供个人欣赏使用，严禁用于商业用途或任何违法行为。</p>
+            </div>
+            
+            <h3>音乐版权声明</h3>
+            <p>云庭音乐平台上的所有音乐文件均为平台作者原创作品或基于开源素材的二次创作作品。所有音乐版权归原作者所有，未经明确授权，禁止用于以下用途：</p>
+            <ul>
+                <li>商业广告、影视作品、游戏或其他盈利性项目</li>
+                <li>重新发布到其他平台并声称拥有版权</li>
+                <li>任何可能侵犯原作者权益的行为</li>
+                <li>政治宣传、非法活动或违反公序良俗的用途</li>
+            </ul>
+            
+            <h3>使用许可</h3>
+            <p>您可以在以下情况下使用云庭音乐的内容：</p>
+            <ul>
+                <li>个人非商业欣赏和学习</li>
+                <li>注明原作者和出处的情况下，在个人博客、社交媒体分享</li>
+                <li>非盈利性教育、研究用途</li>
+                <li>经原作者明确授权的其他用途</li>
+            </ul>
+            
+            <div class="info-box">
+                <p><i class="fas fa-info-circle"></i> 如需商业用途授权或特殊使用许可，请联系相关音乐作者。平台不提供授权中介服务。</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2><i class="fas fa-code"></i> 开发指南与API说明</h2>
+            
+            <p>云庭音乐提供了一系列标准化的URL结构，方便开发者集成和使用音乐资源。</p>
+            
+            <h3>核心URL结构</h3>
+            <ul class="url-list">
+                <li>
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <strong>网站主页：</strong>
+                        <a href="https://music.ytin.mgo.us.ci/" target="_blank" class="url-link">https://music.ytin.mgo.us.ci/</a>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-play-circle"></i>
+                    <div>
+                        <strong>音乐播放页面：</strong>
+                        <a href="https://music.ytin.mgo.us.ci/music/{音乐ID}/" target="_blank" class="url-link">https://music.ytin.mgo.us.ci/music/音乐ID/</a>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--moss-gray);">将{音乐ID}替换为具体音乐的数字ID，例如：music/123/</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <strong>乐队/团队主页：</strong>
+                        <a href="https://music.ytin.mgo.us.ci/team/{乐队ID}/" target="_blank" class="url-link">https://music.ytin.mgo.us.ci/team/乐队ID/</a>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--moss-gray);">将{乐队ID}替换为具体乐队或团队的数字ID</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <strong>音乐人贡献榜：</strong>
+                        <a href="https://music.ytin.mgo.us.ci/team/" target="_blank" class="url-link">https://music.ytin.mgo.us.ci/team/</a>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--moss-gray);">展示所有音乐人及其贡献的排行榜</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-file-audio"></i>
+                    <div>
+                        <strong>音乐源文件直链：</strong>
+                        <a href="https://music.ytin.mgo.us.ci/music/{音乐ID}.mp3" target="_blank" class="url-link">https://music.ytin.mgo.us.ci/music/音乐ID.mp3</a>
+                        <p style="margin-top: 8px; font-size: 0.9rem; color: var(--moss-gray);">直接获取MP3音频文件，例如：music/123.mp3</p>
+                    </div>
+                </li>
+            </ul>
+            
+            <h3>开发建议</h3>
+            <p>1. 使用音乐源文件直链时，请确保遵守免责声明中的使用条款</p>
+            <p>2. 建议在您的应用中提供返回原作品页面的链接，尊重原作者劳动</p>
+            <p>3. 可以考虑缓存音乐文件以减少服务器压力，但请定期检查更新</p>
+            <p>4. 如有大量使用需求，建议联系平台或作者获取授权</p>
+        </section>
+        
+        <section class="section" id="contact">
+            <h2><i class="fas fa-question-circle"></i> 常见问题与联系</h2>
+            
+            <h3>如何获取音乐ID？</h3>
+            <p>访问云庭音乐主页，浏览音乐列表，每首音乐的播放页面URL中都包含其独特的音乐ID。</p>
+            
+            <h3>可以批量下载音乐吗？</h3>
+            <p>平台不提供批量下载功能，请尊重每位作者的创作，逐一下载并遵守使用条款。</p>
+            
+            <h3>如何联系音乐作者？</h3>
+            <p>在每首音乐的播放页面通常会有作者的联系方式或简介，您也可以通过乐队主页了解团队信息。</p>
+            
+            <h3>发现侵权行为怎么办？</h3>
+            <p>如果您发现云庭音乐的作品被滥用，请通过平台主页的联系方式向我们举报，我们会协助作者处理。</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://music.ytin.mgo.us.ci/" target="_blank" class="button">访问云庭音乐主页</a>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>云庭音乐平台 &copy; 2025-2026 - 基于开源精神构建的音乐分享社区</p>
+            <p>本页面仅为文档说明，实际功能请访问 <a href="https://music.ytin.mgo.us.ci/" target="_blank" class="url-link">云庭音乐主页</a></p>
+            <p style="margin-top: 15px; font-size: 0.8rem;">文档版本: 2026.01.01 | 配色: 霁青蓝·月影白·苔痕灰·赤心橙</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 创建漂浮的音符背景
+        document.addEventListener('DOMContentLoaded', function() {
+            const notes = ['♩', '♪', '♫', '♬', '♭', '♮', '♯'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 15; i++) {
+                const note = document.createElement('div');
+                note.className = 'music-note';
+                note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                note.style.left = Math.random() * 100 + 'vw';
+                note.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+                note.style.animationDelay = Math.random() * 5 + 's';
+                note.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                note.style.color = i % 3 === 0 ? '#5D8AA8' : (i % 3 === 1 ? '#6B7A7F' : '#E86A52');
+                document.body.appendChild(note);
+            }
+            
+            // 为所有外部链接添加图标
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-external-link-alt';
+                icon.style.marginLeft = '5px';
+                icon.style.fontSize = '0.8em';
+                link.appendChild(icon);
+            });
+            
+            // 添加年份徽章动画
+            const yearBadge = document.querySelector('.year-badge');
+            if(yearBadge) {
+                yearBadge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                yearBadge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+            
+            // 更新时间显示动态效果
+            const updateTime = document.querySelector('.update-time');
+            if(updateTime) {
+                updateTime.addEventListener('click', function() {
+                    const now = new Date();
+                    const formattedDate = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                    this.innerHTML = `<i class="fas fa-sync-alt"></i><span>最后更新: ${formattedDate} (实时)</span>`;
+                    
+                    // 3秒后恢复原状
+                    setTimeout(() => {
+                        this.innerHTML = `<i class="fas fa-clock"></i><span>最后更新: 2026年1月1日 00:00</span>`;
+                    }, 3000);
+                });
+            }
+            
+            // 为所有按钮添加点击效果
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // 创建涟漪效果
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.7);
+                        transform: scale(0);
+                        animation: ripple-animation 0.6s linear;
+                        width: ${size}px;
+                        height: ${size}px;
+                        top: ${y}px;
+                        left: ${x}px;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    // 移除涟漪元素
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+        
+        // 添加涟漪动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
