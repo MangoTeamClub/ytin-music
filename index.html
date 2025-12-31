@@ -274,6 +274,40 @@
             transform: scale(1.05);
         }
         
+        /* 歌曲详情按钮 */
+        .detail-btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0 25px;
+        }
+        
+        .detail-btn {
+            background-color: rgba(93, 138, 168, 0.1);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(93, 138, 168, 0.15);
+        }
+        
+        .detail-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(93, 138, 168, 0.25);
+        }
+        
+        .detail-btn:active {
+            transform: translateY(0);
+        }
+        
         .volume-control {
             display: flex;
             align-items: center;
@@ -495,6 +529,11 @@
                 padding: 8px 16px;
                 font-size: 14px;
             }
+            
+            .detail-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -551,6 +590,14 @@
                             </button>
                         </div>
                         
+                        <!-- 歌曲详情按钮 -->
+                        <div class="detail-btn-container">
+                            <button class="detail-btn" id="detailBtn">
+                                <i class="fas fa-info-circle"></i>
+                                <span>歌曲详情</span>
+                            </button>
+                        </div>
+                        
                         <div class="volume-control">
                             <i class="fas fa-volume-up"></i>
                             <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
@@ -582,6 +629,9 @@
             <p style="margin-top: 10px; font-size: 12px; opacity: 0.7;">
                 点击右上角 <i class="fas fa-user-edit" style="color: var(--accent-color);"></i> 创作者中心 进入音乐创作平台
             </p>
+            <p style="margin-top: 5px; font-size: 12px; opacity: 0.7;">
+                点击播放器中的 <i class="fas fa-info-circle" style="color: var(--primary-color);"></i> 歌曲详情 查看当前歌曲详细信息
+            </p>
         </footer>
     </div>
     
@@ -610,9 +660,112 @@
             const playingSong = document.getElementById('playingSong');
             const playerStatus = document.getElementById('playerStatus');
             const creatorCenterBtn = document.getElementById('creatorCenterBtn');
+            const detailBtn = document.getElementById('detailBtn');
             
             // 音乐数据
-            const totalSongsCount = 100;
+            const audioData = [
+                { id: 1, title: "未命名1", filename: "music001", duration: "01:35" },
+                { id: 2, title: "未命名2", filename: "music002", duration: "01:35" },
+                { id: 3, title: "未命名3", filename: "music003", duration: "01:35" },
+                { id: 4, title: "未命名4", filename: "music004", duration: "01:35" },
+                { id: 5, title: "未命名5", filename: "music005", duration: "01:35" },
+                { id: 6, title: "未命名6", filename: "music006", duration: "01:35" },
+                { id: 7, title: "未命名7", filename: "music007", duration: "01:35" },
+                { id: 8, title: "未命名8", filename: "music008", duration: "01:35" },
+                { id: 9, title: "未命名9", filename: "music009", duration: "01:35" },
+                { id: 10, title: "未命名10", filename: "music010", duration: "01:35" },
+                { id: 11, title: "未命名11", filename: "music011", duration: "01:35" },
+                { id: 12, title: "未命名12", filename: "music012", duration: "01:35" },
+                { id: 13, title: "未命名13", filename: "music013", duration: "01:35" },
+                { id: 14, title: "未命名14", filename: "music014", duration: "01:35" },
+                { id: 15, title: "未命名15", filename: "music015", duration: "01:35" },
+                { id: 16, title: "未命名16", filename: "music016", duration: "01:35" },
+                { id: 17, title: "未命名17", filename: "music017", duration: "01:35" },
+                { id: 18, title: "未命名18", filename: "music018", duration: "01:35" },
+                { id: 19, title: "未命名19", filename: "music019", duration: "01:35" },
+                { id: 20, title: "未命名20", filename: "music020", duration: "01:35" },
+                { id: 21, title: "未命名21", filename: "music021", duration: "01:35" },
+                { id: 22, title: "未命名22", filename: "music022", duration: "01:35" },
+                { id: 23, title: "未命名23", filename: "music023", duration: "01:35" },
+                { id: 24, title: "未命名24", filename: "music024", duration: "01:35" },
+                { id: 25, title: "未命名25", filename: "music025", duration: "01:35" },
+                { id: 26, title: "未命名26", filename: "music026", duration: "01:35" },
+                { id: 27, title: "未命名27", filename: "music027", duration: "01:35" },
+                { id: 28, title: "未命名28", filename: "music028", duration: "01:35" },
+                { id: 29, title: "未命名29", filename: "music029", duration: "01:35" },
+                { id: 30, title: "未命名30", filename: "music030", duration: "01:35" },
+                { id: 31, title: "未命名31", filename: "music031", duration: "01:35" },
+                { id: 32, title: "未命名32", filename: "music032", duration: "01:35" },
+                { id: 33, title: "未命名33", filename: "music033", duration: "01:35" },
+                { id: 34, title: "未命名34", filename: "music034", duration: "01:35" },
+                { id: 35, title: "未命名35", filename: "music035", duration: "01:35" },
+                { id: 36, title: "未命名36", filename: "music036", duration: "01:35" },
+                { id: 37, title: "未命名37", filename: "music037", duration: "01:35" },
+                { id: 38, title: "未命名38", filename: "music038", duration: "01:35" },
+                { id: 39, title: "未命名39", filename: "music039", duration: "01:35" },
+                { id: 40, title: "未命名40", filename: "music040", duration: "01:35" },
+                { id: 41, title: "未命名41", filename: "music041", duration: "01:35" },
+                { id: 42, title: "未命名42", filename: "music042", duration: "01:35" },
+                { id: 43, title: "未命名43", filename: "music043", duration: "01:35" },
+                { id: 44, title: "未命名44", filename: "music044", duration: "01:35" },
+                { id: 45, title: "未命名45", filename: "music045", duration: "01:35" },
+                { id: 46, title: "未命名46", filename: "music046", duration: "01:35" },
+                { id: 47, title: "未命名47", filename: "music047", duration: "01:35" },
+                { id: 48, title: "未命名48", filename: "music048", duration: "01:35" },
+                { id: 49, title: "未命名49", filename: "music049", duration: "01:35" },
+                { id: 50, title: "未命名50", filename: "music050", duration: "01:35" },
+                { id: 51, title: "未命名51", filename: "music051", duration: "01:35" },
+                { id: 52, title: "未命名52", filename: "music052", duration: "01:35" },
+                { id: 53, title: "未命名53", filename: "music053", duration: "01:35" },
+                { id: 54, title: "未命名54", filename: "music054", duration: "01:35" },
+                { id: 55, title: "未命名55", filename: "music055", duration: "01:35" },
+                { id: 56, title: "未命名56", filename: "music056", duration: "01:35" },
+                { id: 57, title: "未命名57", filename: "music057", duration: "01:35" },
+                { id: 58, title: "未命名58", filename: "music058", duration: "01:35" },
+                { id: 59, title: "未命名59", filename: "music059", duration: "01:35" },
+                { id: 60, title: "未命名60", filename: "music060", duration: "01:35" },
+                { id: 61, title: "未命名61", filename: "music061", duration: "01:35" },
+                { id: 62, title: "未命名62", filename: "music062", duration: "01:35" },
+                { id: 63, title: "未命名63", filename: "music063", duration: "01:35" },
+                { id: 64, title: "未命名64", filename: "music064", duration: "01:35" },
+                { id: 65, title: "未命名65", filename: "music065", duration: "01:35" },
+                { id: 66, title: "未命名66", filename: "music066", duration: "01:35" },
+                { id: 67, title: "未命名67", filename: "music067", duration: "01:35" },
+                { id: 68, title: "未命名68", filename: "music068", duration: "01:35" },
+                { id: 69, title: "未命名69", filename: "music069", duration: "01:35" },
+                { id: 70, title: "未命名70", filename: "music070", duration: "01:35" },
+                { id: 71, title: "未命名71", filename: "music071", duration: "01:35" },
+                { id: 72, title: "未命名72", filename: "music072", duration: "01:35" },
+                { id: 73, title: "未命名73", filename: "music073", duration: "01:35" },
+                { id: 74, title: "未命名74", filename: "music074", duration: "01:35" },
+                { id: 75, title: "未命名75", filename: "music075", duration: "01:35" },
+                { id: 76, title: "未命名76", filename: "music076", duration: "01:35" },
+                { id: 77, title: "未命名77", filename: "music077", duration: "01:35" },
+                { id: 78, title: "未命名78", filename: "music078", duration: "01:35" },
+                { id: 79, title: "未命名79", filename: "music079", duration: "01:35" },
+                { id: 80, title: "未命名80", filename: "music080", duration: "01:35" },
+                { id: 81, title: "未命名81", filename: "music081", duration: "01:35" },
+                { id: 82, title: "未命名82", filename: "music082", duration: "01:35" },
+                { id: 83, title: "未命名83", filename: "music083", duration: "01:35" },
+                { id: 84, title: "未命名84", filename: "music084", duration: "01:35" },
+                { id: 85, title: "未命名85", filename: "music085", duration: "01:35" },
+                { id: 86, title: "未命名86", filename: "music086", duration: "01:35" },
+                { id: 87, title: "未命名87", filename: "music087", duration: "01:35" },
+                { id: 88, title: "未命名88", filename: "music088", duration: "01:35" },
+                { id: 89, title: "未命名89", filename: "music089", duration: "01:35" },
+                { id: 90, title: "未命名90", filename: "music090", duration: "01:35" },
+                { id: 91, title: "未命名91", filename: "music091", duration: "01:35" },
+                { id: 92, title: "未命名92", filename: "music092", duration: "01:35" },
+                { id: 93, title: "未命名93", filename: "music093", duration: "01:35" },
+                { id: 94, title: "未命名94", filename: "music094", duration: "01:35" },
+                { id: 95, title: "未命名95", filename: "music095", duration: "01:35" },
+                { id: 96, title: "未命名96", filename: "music096", duration: "01:35" },
+                { id: 97, title: "未命名97", filename: "music097", duration: "01:35" },
+                { id: 98, title: "未命名98", filename: "music098", duration: "01:35" },
+                { id: 99, title: "未命名99", filename: "music099", duration: "01:35" },
+                { id: 100, title: "未命名100", filename: "music100", duration: "01:35" }
+            ];
+            
             let currentSongIndex = 0;
             let isPlaying = false;
             let songs = [];
@@ -620,19 +773,17 @@
             // 初始化歌曲列表
             function initializeSongs() {
                 songs = [];
-                for (let i = 1; i <= totalSongsCount; i++) {
-                    // 格式化歌曲编号为三位数
-                    const songNumber = i.toString().padStart(3, '0');
+                audioData.forEach(item => {
                     songs.push({
-                        id: i,
-                        title: `未命名 ${songNumber}`,
+                        id: item.id,
+                        title: item.title,
                         artist: '测试',
                         cover: 'https://avatars.githubusercontent.com/u/242339050?v=4',
-                        file: `music${songNumber}.mp3`,
-                        duration: '03:45' // 假设每首歌时长3分45秒
+                        file: item.filename + '.mp3',
+                        duration: item.duration
                     });
-                }
-                totalSongs.textContent = totalSongsCount;
+                });
+                totalSongs.textContent = audioData.length;
             }
             
             // 生成歌曲列表HTML
@@ -723,6 +874,22 @@
             creatorCenterBtn.addEventListener('click', function() {
                 // 跳转到指定网址
                 window.open('https://open.music.ytin.mgo.us.ci', '_blank');
+                
+                // 添加点击反馈效果
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+            
+            // 歌曲详情按钮点击事件
+            detailBtn.addEventListener('click', function() {
+                // 获取当前歌曲ID并格式化为三位数
+                const currentSongId = (currentSongIndex + 1).toString().padStart(3, '0');
+                // 构建跳转URL
+                const detailUrl = `https://music.ytin.mgo.us.ci/music/${currentSongId}`;
+                // 跳转到歌曲详情页
+                window.open(detailUrl, '_blank');
                 
                 // 添加点击反馈效果
                 this.style.transform = 'scale(0.95)';
